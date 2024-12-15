@@ -4,11 +4,10 @@ var ee = require(`${process.cwd()}/botconfig/embed.json`);
 const emoji = require(`${process.cwd()}/botconfig/emojis.json`);
 const { parseMilliseconds, duration, GetUser, nFormatter, ensure_economy_user } = require(`${process.cwd()}/handlers/functions`)
 module.exports = {
-  name: "balance",
+  name: "bank",
   category: "💸 Economy",
-  aliases: ["bal", "wallet"],
   description: "Lets you check how much money you have",
-  usage: "balance [@USER]",
+  usage: "bank [@USER]",
   type: "info",
   run: async (client, message, args, cmduser, text, prefix) => {
     
@@ -28,17 +27,16 @@ module.exports = {
         try {
           user = await GetUser(message, args)
         } catch (e) {
-          if (!e) return message.reply(eval(client.la[ls]["cmds"]["economy"]["balance"]["variable1"]))
+          if (!e) return message.reply(eval(client.la[ls]["cmds"]["economy"]["bank"]["variable1"]))
           return message.reply({content: String('```' + e.message ? String(e.message).substr(0, 1900) : String(e) + '```')})
         }
       } else {
         user = message.author;
       }
       if (!user || user == null || user.id == null || !user.id) user = message.author
-      if (user.bot) return message.reply(eval(client.la[ls]["cmds"]["economy"]["balance"]["variable2"]))
+      if (user.bot) return message.reply(eval(client.la[ls]["cmds"]["economy"]["bank"]["variable2"]))
       //ensure the economy data
       ensure_economy_user(client, message.guild.id, user.id)
-      
       //get the economy data 
       const data = client.economy.get(`${message.guild.id}-${user.id}`)
       var items = 0;
@@ -76,15 +74,15 @@ module.exports = {
       return message.reply({embeds: [new MessageEmbed()
         .setColor(es.color).setThumbnail(es.thumb ? es.footericon && (es.footericon.includes("http://") || es.footericon.includes("https://")) ? es.footericon : client.user.displayAvatarURL() : null)
         .setFooter(user.tag, user.displayAvatarURL({ dynamic: true }))
-        .setTitle(eval(client.la[ls]["cmds"]["economy"]["balance"]["variable3"]))
-        .setDescription(eval(client.la[ls]["cmds"]["economy"]["balance"]["variable4"]))
+        .setTitle(eval(client.la[ls]["cmds"]["economy"]["bank"]["variable3"]))
+        .setDescription(eval(client.la[ls]["cmds"]["economy"]["bank"]["variable4"]))
       ]});
     } catch (e) {
       console.log(String(e.stack).grey.bgRed)
       return message.reply({embeds: [new MessageEmbed()
         .setColor(es.wrongcolor).setFooter(client.getFooter(es))
         .setTitle(client.la[ls].common.erroroccur)
-        .setDescription(eval(client.la[ls]["cmds"]["economy"]["balance"]["variable5"]))
+        .setDescription(eval(client.la[ls]["cmds"]["economy"]["bank"]["variable5"]))
       ]});
     }
   }
