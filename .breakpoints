@@ -1,0 +1,20 @@
+{
+  "files": {
+    "botconfig/config.json": [
+      {
+        "id": "5da43748-35dd-4d9b-83c3-1aa09f6a4611",
+        "line": 39,
+        "version": 1,
+        "index": 871
+      }
+    ],
+    "commands/😳 Anime-Emotions/a-bully.js": [
+      {
+        "id": "f8736f13-a48d-42cf-9363-0b6262d292b5",
+        "line": 8,
+        "version": 1,
+        "index": 381
+      }
+    ]
+  }
+}
