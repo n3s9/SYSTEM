@@ -1,6 +1,5 @@
 const Discord = require("discord.js");
 const colors = require("colors");
-const enmap = require("enmap"); 
 const fs = require("fs"); 
 const emojis = require("./botconfig/emojis.json");
 const config = require("./botconfig/config.json");
